@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getUserName } from '../../redux/auth/auth-selectors';
+import { logOut } from '../../redux/auth/auth-operations';
 import './UserNav.css';
 
 const UserNav = ({ name, onLogout }) => {
@@ -22,8 +23,8 @@ const mapStateToProps = state => ({
   name: getUserName(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   onLogout: id => dispatch(deleteContact(id)),
-// });
+const mapDispatchToProps = {
+  onLogout: logOut,
+};
 
-export default connect(mapStateToProps)(UserNav);
+export default connect(mapStateToProps, mapDispatchToProps)(UserNav);

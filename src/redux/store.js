@@ -6,7 +6,10 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
+  persistStore,
+  persistReducer,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 // import logger from 'redux-logger';
 import reducer from './reducer';
 import authReducer from './auth/auth-reducer';
@@ -27,13 +30,21 @@ const middleware = [
   // logger,
 ];
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
 const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
     contacts: reducer,
   },
   middleware: middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-export { store };
+const persistor = persistStore(store);
+
+export { store, persistor };

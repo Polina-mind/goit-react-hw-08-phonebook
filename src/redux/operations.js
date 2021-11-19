@@ -15,9 +15,9 @@ const fetchContacts = () => dispatch => {
   dispatch(fetchContactRequest());
 
   axios
-    .get('https://618d756dfe09aa001744077a.mockapi.io/contacts/contacts')
+    .get('/contacts')
     .then(({ data }) => dispatch(fetchContactSuccess(data)))
-    .catch(error => dispatch(fetchContactError(error)));
+    .catch(error => dispatch(fetchContactError(error.message)));
 };
 
 const addContact = (name, number) => dispatch => {
@@ -26,23 +26,18 @@ const addContact = (name, number) => dispatch => {
   dispatch(addContactRequest());
 
   axios
-    .post(
-      'https://618d756dfe09aa001744077a.mockapi.io/contacts/contacts',
-      contact,
-    )
+    .post('/contacts', contact)
     .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error)));
+    .catch(error => dispatch(addContactError(error.message)));
 };
 
 const deleteContact = id => dispatch => {
   dispatch(deleteContactRequest(id));
 
   axios
-    .delete(
-      `https://618d756dfe09aa001744077a.mockapi.io/contacts/contacts/${id}`,
-    )
+    .delete(`/contacts/${id}`)
     .then(() => dispatch(deleteContactSuccess(id)))
-    .catch(error => dispatch(deleteContactError(error)));
+    .catch(error => dispatch(deleteContactError(error.message)));
 };
 
 //асинхронный вариант
@@ -51,12 +46,12 @@ const deleteContact = id => dispatch => {
 
 //   try {
 //     const { data } = await axios.get(
-//       'https://618d756dfe09aa001744077a.mockapi.io/contacts/contacts',
+//       '/contacts',
 //     );
 
 //     dispatch(fetchContactSuccess(data));
 //   } catch (error) {
-//     dispatch(fetchContactError(error));
+//     dispatch(fetchContactError(error.message));
 //   }
 // };
 
@@ -69,12 +64,12 @@ const deleteContact = id => dispatch => {
 //   dispatch(addContactRequest());
 //   try {
 //     const { data } = await axios.post(
-//       'https://618d756dfe09aa001744077a.mockapi.io/contacts/contacts',
+//       '/contacts',
 //       contact,
 //     );
 //     dispatch(addContactSuccess(data));
 //   } catch (error) {
-//     dispatch(addContactError(error));
+//     dispatch(addContactError(error.message));
 //   }
 // };
 
@@ -82,11 +77,11 @@ const deleteContact = id => dispatch => {
 //   dispatch(deleteContactRequest(id));
 //   try {
 //     await axios.delete(
-//       `https://618d756dfe09aa001744077a.mockapi.io/contacts/contacts/${id}`,
+//       `/contacts/${id}`,
 //     );
 //     dispatch(deleteContactSuccess(id));
 //   } catch (error) {
-//     dispatch(deleteContactError(error));
+//     dispatch(deleteContactError(error.message));
 //   }
 // };
 
