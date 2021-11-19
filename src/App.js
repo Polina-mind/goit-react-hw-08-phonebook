@@ -7,6 +7,14 @@ const HomeView = lazy(() =>
   import('./views/HomeView' /* webpackChunkName: "HomeView" */),
 );
 
+const RegisterView = lazy(() =>
+  import('./views/RegisterView' /* webpackChunkName: "RegisterView" */),
+);
+
+const LoginView = lazy(() =>
+  import('./views/LoginView' /* webpackChunkName: "LoginView" */),
+);
+
 const ContactsView = lazy(() =>
   import('./views/ContactsView' /* webpackChunkName: "ContactsView" */),
 );
@@ -22,8 +30,8 @@ function App() {
       <Suspense fallback={<p>Loading...</p>}>
         <Switch>
           <Route exact path="/" component={HomeView} />
-          {/* <Route exact path="/register" component={RegisterPage} /> */}
-          {/* <Route exact path="/login" component={LoginPage} /> */}
+          <Route exact path="/register" component={RegisterView} />
+          <Route exact path="/login" component={LoginView} />
           <Route path="/contacts" component={ContactsView} />
           <Route path="*" component={NotFoundView} />
         </Switch>

@@ -1,0 +1,11 @@
+.Text {
+  margin: 0 15px 0 0;
+  /* padding: 0; */
+  font-size: 18px;
+  font-weight: 600;
+  color: currentColor;
+}
+
+.LogoutBtn {
+  margin-right: 15px;
+}
