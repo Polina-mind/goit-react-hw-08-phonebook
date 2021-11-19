@@ -1,6 +1,8 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AppBar from './components/AppBar';
+import { getCurrentUser } from './redux/auth/auth-operations';
 import './App.css';
 
 const HomeView = lazy(() =>
@@ -22,22 +24,32 @@ const NotFoundView = lazy(() =>
   import('./views/NotFoundView' /* webpackChunkName: "NotFoundView" */),
 );
 
-function App() {
-  return (
-    <>
-      <AppBar />
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+  }
 
-      <Suspense fallback={<p>Loading...</p>}>
-        <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route exact path="/register" component={RegisterView} />
-          <Route exact path="/login" component={LoginView} />
-          <Route path="/contacts" component={ContactsView} />
-          <Route path="*" component={NotFoundView} />
-        </Switch>
-      </Suspense>
-    </>
-  );
+  render() {
+    return (
+      <>
+        <AppBar />
+
+        <Suspense fallback={<p>Loading...</p>}>
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <Route exact path="/register" component={RegisterView} />
+            <Route exact path="/login" component={LoginView} />
+            <Route path="/contacts" component={ContactsView} />
+            <Route path="*" component={NotFoundView} />
+          </Switch>
+        </Suspense>
+      </>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = {
+  onGetCurrentUser: getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

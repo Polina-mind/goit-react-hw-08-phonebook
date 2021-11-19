@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 import AuthNav from '../AuthNav';
 import UserNav from '../UserNav';
-import './AppBar.css';
 import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
+
+import './AppBar.css';
 
 const AppBar = ({ isAuthenticated }) => (
   <header>
