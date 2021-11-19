@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import './Form.css';
+import { register } from '../redux/auth/auth-operations';
 
 class RegisterView extends Component {
   state = {
@@ -18,7 +17,7 @@ class RegisterView extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    //   this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state);
     this.setState({ name: '', email: '', password: '' });
   };
 
@@ -66,13 +65,13 @@ class RegisterView extends Component {
               value={password}
               onChange={this.handleChange}
               // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              placeholder="*****"
+              placeholder="*******"
               required
             />
           </label>
 
           <button type="submit" className="Button">
-            Войти
+            Зарегистрироваться
           </button>
         </form>
       </>
@@ -81,8 +80,12 @@ class RegisterView extends Component {
 }
 
 // const mapDispatchToProps = dispatch => ({
-//   onSubmit: (name, number) => dispatch(addContact(name, number)),
+//   onSubmit: data => dispatch(register(data)),
 // });
 
-// export default connect(null, mapDispatchToProps)(RegisterView);
-export default RegisterView;
+//сокращенный синтаксис
+const mapDispatchToProps = {
+  onSubmit: register,
+};
+
+export default connect(null, mapDispatchToProps)(RegisterView);

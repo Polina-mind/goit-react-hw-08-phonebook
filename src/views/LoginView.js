@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logIn } from '../redux/auth/auth-operations';
 
 class LoginView extends Component {
   state = {
@@ -16,7 +16,7 @@ class LoginView extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    //   this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state);
     this.setState({ name: '', email: '', password: '' });
   };
 
@@ -65,9 +65,8 @@ class LoginView extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: (name, number) => dispatch(addContact(name, number)),
-// });
+const mapDispatchToProps = {
+  onSubmit: logIn,
+};
 
-// export default connect(null, mapDispatchToProps)(LoginView);
-export default LoginView;
+export default connect(null, mapDispatchToProps)(LoginView);
