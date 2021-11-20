@@ -19,7 +19,7 @@ const Contacts = ({ contacts, onDelete }) => {
               onClick={() => onDelete(id)}
               id={id}
             >
-              Delete
+              Удалить
             </button>
           </li>
         ))}

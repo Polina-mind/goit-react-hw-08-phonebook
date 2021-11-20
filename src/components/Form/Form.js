@@ -28,7 +28,7 @@ class Form extends Component {
       return;
     }
 
-    alert('No name or number to save!');
+    alert('Нет имени или номера для сохранения контакта!');
   };
 
   render() {
@@ -37,7 +37,7 @@ class Form extends Component {
     return (
       <form type="submit" onSubmit={this.handleSubmit} className="Form">
         <label className="Label">
-          Name
+          Имя
           <input
             className="Input"
             value={name}
@@ -46,13 +46,13 @@ class Form extends Component {
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            placeholder="Polina"
+            // placeholder="Polina"
             required
           />
         </label>
 
         <label className="Label">
-          Number
+          Номер
           <input
             className="Input"
             value={number}
@@ -61,13 +61,13 @@ class Form extends Component {
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            placeholder="000-00-00"
+            // placeholder="000-00-00"
             required
           />
         </label>
 
         <button type="submit" className="Button">
-          Add contact
+          Добавить
         </button>
       </form>
     );

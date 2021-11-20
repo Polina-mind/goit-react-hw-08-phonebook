@@ -8,11 +8,11 @@ const UserNav = ({ name, onLogout }) => {
   return (
     <ul className="AuthLinks">
       <li>
-        <p className="Text">Welcome, {name}</p>
+        <p className="Text">{name}</p>
       </li>
       <li>
         <button className="LogoutBtn" type="button" onClick={onLogout}>
-          Logout
+          Выход
         </button>
       </li>
     </ul>

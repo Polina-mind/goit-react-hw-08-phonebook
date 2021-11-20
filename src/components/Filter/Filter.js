@@ -8,7 +8,7 @@ import { getFilter } from '../../redux/selectors';
 const Filter = ({ filter, handleChange }) => {
   return (
     <div>
-      <p className="FindTitle">Find contacts by name</p>
+      <p className="FindTitle">Поиск по имени</p>
 
       <input
         className="InputFilter"

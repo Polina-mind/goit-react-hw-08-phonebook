@@ -22,3 +22,8 @@
   background-color: rgb(203, 230, 253);
   cursor: pointer;
 }
+
+.ButtonDelete:hover,
+.ButtonDelete:focus {
+  background-color: rgb(241, 209, 229);
+}
