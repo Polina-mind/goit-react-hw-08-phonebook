@@ -8,6 +8,9 @@
 .InputFilter {
   display: block;
   margin: 5px auto 20px auto;
+  padding: 5px;
   width: 350px;
+  height: 35px;
   border: 1px solid rgb(177, 174, 174);
+  border-radius: 3px;
 }

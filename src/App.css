@@ -18,14 +18,17 @@
   display: block;
   margin-top: 5px;
   margin-bottom: 20px;
+  padding: 5px;
   width: 300px;
+  height: 35px;
+  border-radius: 3px;
 }
 
 .Button {
   margin-right: 10px;
-  margin-bottom: 5px;
   border-radius: 4px;
-  background-color: rgb(203, 230, 253);
+  padding: 4px;
+  background-color: rgb(198, 227, 253);
   cursor: pointer;
 }
 
