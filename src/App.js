@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppBar from './components/AppBar';
 import { getCurrentUser } from './redux/auth/auth-operations';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 import './App.css';
 
 const HomeView = lazy(() =>
@@ -36,10 +38,26 @@ class App extends Component {
 
         <Suspense fallback={<p>Loading...</p>}>
           <Switch>
-            <Route exact path="/" component={HomeView} />
-            <Route exact path="/register" component={RegisterView} />
-            <Route exact path="/login" component={LoginView} />
-            <Route path="/contacts" component={ContactsView} />
+            <PublicRoute exact path="/" component={HomeView} />
+            <PublicRoute
+              exact
+              path="/register"
+              restricted
+              redirectTo="/contacts"
+              component={RegisterView}
+            />
+            <PublicRoute
+              exact
+              path="/login"
+              restricted
+              redirectTo="/contacts"
+              component={LoginView}
+            />
+            <PrivateRoute
+              path="/contacts"
+              redirectTo="/login"
+              component={ContactsView}
+            />
             <Route path="*" component={NotFoundView} />
           </Switch>
         </Suspense>
