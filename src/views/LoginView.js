@@ -37,8 +37,7 @@ class LoginView extends Component {
               name="email"
               value={email}
               onChange={this.handleChange}
-              // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              placeholder="Polina@gmail.com"
+              placeholder="Name@mail.com"
               required
             />
           </label>
@@ -51,8 +50,6 @@ class LoginView extends Component {
               name="password"
               value={password}
               onChange={this.handleChange}
-              // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              placeholder="*****"
               autoComplete="off"
               required
             />

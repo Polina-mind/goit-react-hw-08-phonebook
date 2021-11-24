@@ -34,6 +34,7 @@ const register = credentials => async dispatch => {
     token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
+    alert(error.message);
     dispatch(registerError(error.message));
   }
 };
